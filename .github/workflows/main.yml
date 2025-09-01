@@ -1,31 +1,54 @@
-# .github/workflows/ci.yml
-name: Node.js CI with Mocha
+# # .github/workflows/ci.yml
+# name: Node.js CI with Mocha
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+
+# jobs:
+#   build: 
+#     runs-on: ubuntu-latest #create env for run
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4                                     #checkout all rapo  insert to ubuntu 
+
+#       - name: Set up Node.js                                          #ubuntu need setup nodejs 
+#         uses: actions/setup-node@v4                                   #ubuntu need install nodejs 
+#         with:
+#           node-version: '18'                                          #set env node ver18
+
+#       - name: Install dependencies                                    #install packet 
+#         run: npm install
+
+#       - name: Set executable permissions for Mocha                    #install mocha
+#         run: chmod +x ./node_modules/.bin/mocha
+
+#       - name: Run tests
+#         run: npm test
+
+
+name: Node.js CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
-  build: 
-    runs-on: ubuntu-latest #create env for run
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4                                     #checkout all rapo  insert to ubuntu 
-
-      - name: Set up Node.js                                          #ubuntu need setup nodejs 
-        uses: actions/setup-node@v4                                   #ubuntu need install nodejs 
-        with:
-          node-version: '18'                                          #set env node ver18
-
-      - name: Install dependencies                                    #install packet 
-        run: npm install
-
-      - name: Set executable permissions for Mocha                    #install mocha
-        run: chmod +x ./node_modules/.bin/mocha
-
-      - name: Run tests
-        run: npm test
+    - uses: actions/checkout@v4
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+    - name: Install dependencies
+      run: npm install
+    - name: Run tests
+      run: npm test
