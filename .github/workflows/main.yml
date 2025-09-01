@@ -10,21 +10,21 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build: 
+    runs-on: ubuntu-latest #create env for run
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4                                     #checkout all rapo  insert to ubuntu 
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Node.js                                          #ubuntu need setup nodejs 
+        uses: actions/setup-node@v4                                   #ubuntu need install nodejs 
         with:
-          node-version: '18'
+          node-version: '18'                                          #set env node ver18
 
-      - name: Install dependencies
+      - name: Install dependencies                                    #install packet 
         run: npm install
 
-      - name: Set executable permissions for Mocha
+      - name: Set executable permissions for Mocha                    #install mocha
         run: chmod +x ./node_modules/.bin/mocha
 
       - name: Run tests
