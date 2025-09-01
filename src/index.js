@@ -1,8 +1,3 @@
-// index.js
-const add = (a, b) => {
-  if (typeof a !== 'number' || typeof b !== 'number') {
-    throw new TypeError('Inputs must be numbers');
-  }
-  return a + b;
+export const greet = () => {
+  return 'Hello, World!';
 };
-export default add;
